@@ -1,7 +1,6 @@
 package producerconsumer;
 
 import java.util.Random;
-import javax.lang.model.util.ElementScanner6;
 import java.lang.StringBuilder;
 
 public class OperationBuilder {

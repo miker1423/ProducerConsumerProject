@@ -1,7 +1,5 @@
 package producerconsumer;
 
-import java.util.concurrent.TimeUnit;
-
 public class OperationConsumer extends Thread {
 
     private QueueBuffer Buffer;
@@ -29,7 +27,7 @@ public class OperationConsumer extends Thread {
             System.out.println("Result: " + parser.evaluate(product));
             
             try {
-                Thread.sleep(WaitTime);
+                Thread.sleep(TimeToWait);
             } catch (Exception e) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, e);
             }
