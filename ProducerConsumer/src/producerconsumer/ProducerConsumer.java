@@ -5,6 +5,8 @@
  */
 package producerconsumer;
 
+import javax.swing.*;
+
 /**
  *
  * @author cesarespinosa
@@ -33,8 +35,16 @@ public class ProducerConsumer {
         // TODO Min and Max for the range of the random
         // TODO When task is done, moves from To-Do to Done
         // TODO Verify all inputs
-        
-        
+
+        // Generates UI
+        SwingProducerConsumer app = new SwingProducerConsumer();
+
+        JFrame frame = new JFrame();
+        frame.setContentPane(app.panelGeneral);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+
         Buffer buffer = new Buffer();
          
         Producer producer = new Producer(buffer);
