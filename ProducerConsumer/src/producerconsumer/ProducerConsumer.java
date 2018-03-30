@@ -33,15 +33,26 @@ public class ProducerConsumer {
         // TODO Min and Max for the range of the random
         // TODO When task is done, moves from To-Do to Done
         // TODO Verify all inputs
+
+        QueueBuffer buffer = new QueueBuffer();
+        OperationBuilder builder = new OperationBuilder(4, 7);
+
+        OperationProducer producer = new OperationProducer(buffer, 5, builder);
+        OperationConsumer consumer = new OperationConsumer(buffer, 7);
+
+        producer.start();
+        consumer.start();
         
         
+        /*
         Buffer buffer = new Buffer();
-         
+        
         Producer producer = new Producer(buffer);
         Consumer consumer = new Consumer(buffer);
         
         producer.start();
         consumer.start();
+        */
     }
     
 }

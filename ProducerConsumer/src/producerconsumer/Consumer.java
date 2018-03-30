@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 public class Consumer extends Thread{
     
     Buffer buffer;
+    long WaitTime;
 
-    public Consumer(Buffer buffer) {
+    public Consumer(Buffer buffer, long waitTime) {
         this.buffer = buffer;
+        WaitTime = waitTime;
     }
     
   
@@ -33,7 +35,7 @@ public class Consumer extends Thread{
             System.out.println("Consumer consumed: " + product);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(WaitTime);
             } catch (Exception e) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, e);
             }
