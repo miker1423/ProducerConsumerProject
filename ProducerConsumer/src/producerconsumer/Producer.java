@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 public class Producer extends Thread{
     
     Buffer buffer;
+    long WaitTime;
 
-    public Producer(Buffer buffer) {
+    public Producer(Buffer buffer, long waitTime) {
         this.buffer = buffer;
+        WaitTime = waitTime;
     }
     
   
@@ -36,7 +38,7 @@ public class Producer extends Thread{
             System.out.println("Producer produced: " + product);
             
             try {
-                Thread.sleep(1000);
+                Thread.sleep(WaitTime);
             } catch (Exception e) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, e);
             }

@@ -25,7 +25,7 @@ public class ProducerConsumer {
         // TODO Interface should output:
         //  * Buffer size
         //  * Producer # and Time for sleep
-        //  * COnsumer # and Time for sleep
+        //  * Consumer # and Time for sleep
         // TODO Button to start
         // TODO Two panels:
         //  * Tasks to do
@@ -38,20 +38,11 @@ public class ProducerConsumer {
 
         // Generates UI
         SwingProducerConsumer app = new SwingProducerConsumer();
-
         JFrame frame = new JFrame();
         frame.setContentPane(app.panelGeneral);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
-        Buffer buffer = new Buffer();
-         
-        Producer producer = new Producer(buffer);
-        Consumer consumer = new Consumer(buffer);
-        
-        producer.start();
-        consumer.start();
     }
     
 }
