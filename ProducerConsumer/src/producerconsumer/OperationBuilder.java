@@ -7,23 +7,18 @@ public class OperationBuilder {
     private int lowerBound;
     private int upperBound;
     private Random randomGenerator = new Random(System.currentTimeMillis());
-    private StringBuilder stringBuilder = new StringBuilder();
 
     public OperationBuilder(int min, int max) {
-        if(min > max){
-            throw new Exception();
-        }
-
         lowerBound = min;
         upperBound = max;
     }
 
     public String generate() {
-        stringBuilder = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("( ");
-        stringBuilder.append(Operator(randomGenerator.nextInt(4)) + " ");
-        stringBuilder.append(GetRandom() + " ");
+        stringBuilder.append(Operator(randomGenerator.nextInt(4))).append(" ");
+        stringBuilder.append(GetRandom()).append(" ");
         stringBuilder.append(GetRandom());
         stringBuilder.append(" )");
 

@@ -9,13 +9,19 @@ import java.util.Queue;
 
 import com.sun.org.apache.xerces.internal.parsers.CachingParserPool.SynchronizedGrammarPool;
 
+import javax.swing.*;
+
 public class QueueBuffer {
     Queue<String> Buffer;
     int maxSize;
+    JTextArea bufferCurrent;
+    DefaultListModel bufferQueue;
 
-    public QueueBuffer(int capacity) {
+    public QueueBuffer(int capacity, JTextArea text, DefaultListModel list) {
         Buffer = new LinkedList<>();
         maxSize = capacity;
+        bufferCurrent = text;
+        bufferQueue = list;
     }
 
     synchronized String consume(){
@@ -29,18 +35,25 @@ public class QueueBuffer {
         }
 
         product = this.Buffer.poll();
+        bufferQueue.removeElement(product);
         if(product == null){
             notify();
+            bufferCurrent.setText("Empty");
             return "";
         }
 
         notify();
+        bufferCurrent.setText(product + "...");
         return product;
     }
 
-    synchronized void produce(String operation){
-        this.Buffer.add(operation);
-
-        notify();
+    synchronized boolean produce(String operation){
+        if(Buffer.size() < maxSize){
+            this.Buffer.add(operation);
+            bufferQueue.addElement(operation);
+            notify();
+            return true;
+        }
+        return false;
     }
 }
